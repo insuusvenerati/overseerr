@@ -3,7 +3,7 @@ import Link from 'next/link';
 import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import useSWR from 'swr';
-import { WatchlistItem } from '../../../server/interfaces/api/discoverInterfaces';
+import type { WatchlistItem } from '../../../server/interfaces/api/discoverInterfaces';
 import type { MediaResultsResponse } from '../../../server/interfaces/api/mediaInterfaces';
 import type { RequestResultsResponse } from '../../../server/interfaces/api/requestInterfaces';
 import PageTitle from '../Common/PageTitle';
