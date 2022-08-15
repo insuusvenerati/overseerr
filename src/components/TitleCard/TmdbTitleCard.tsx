@@ -5,16 +5,17 @@ import TitleCard from '.';
 import type { MovieDetails } from '../../../server/models/Movie';
 import type { TvDetails } from '../../../server/models/Tv';
 
-interface TmdbTitleCardProps {
+type TmdbTitleCardProps = {
   tmdbId: number;
   type: 'movie' | 'tv';
-}
+  canExpand?: boolean;
+};
 
 const isMovie = (movie: MovieDetails | TvDetails): movie is MovieDetails => {
   return (movie as MovieDetails).title !== undefined;
 };
 
-const TmdbTitleCard = ({ tmdbId, type }: TmdbTitleCardProps) => {
+const TmdbTitleCard = ({ tmdbId, type, canExpand }: TmdbTitleCardProps) => {
   const { ref, inView } = useInView({
     triggerOnce: true,
   });
@@ -27,13 +28,13 @@ const TmdbTitleCard = ({ tmdbId, type }: TmdbTitleCardProps) => {
   if (!title && !error) {
     return (
       <div ref={ref}>
-        <TitleCard.Placeholder />
+        <TitleCard.Placeholder canExpand={canExpand} />
       </div>
     );
   }
 
   if (!title) {
-    return <TitleCard.Placeholder />;
+    return <TitleCard.Placeholder canExpand={canExpand} />;
   }
 
   return isMovie(title) ? (
@@ -46,6 +47,7 @@ const TmdbTitleCard = ({ tmdbId, type }: TmdbTitleCardProps) => {
       userScore={title.voteAverage}
       year={title.releaseDate}
       mediaType={'movie'}
+      canExpand={canExpand}
     />
   ) : (
     <TitleCard
@@ -57,6 +59,7 @@ const TmdbTitleCard = ({ tmdbId, type }: TmdbTitleCardProps) => {
       userScore={title.voteAverage}
       year={title.firstAirDate}
       mediaType={'tv'}
+      canExpand={canExpand}
     />
   );
 };
