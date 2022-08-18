@@ -72,9 +72,13 @@ interface ManageSlideOverTvProps extends ManageSlideOverProps {
   data: TvDetails;
 }
 
-const ManageSlideOver: React.FC<
-  ManageSlideOverMovieProps | ManageSlideOverTvProps
-> = ({ show, mediaType, onClose, data, revalidate }) => {
+const ManageSlideOver = ({
+  show,
+  mediaType,
+  onClose,
+  data,
+  revalidate,
+}: ManageSlideOverMovieProps | ManageSlideOverTvProps) => {
   const { user: currentUser, hasPermission } = useUser();
   const intl = useIntl();
   const settings = useSettings();
