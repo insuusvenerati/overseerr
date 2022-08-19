@@ -1,5 +1,6 @@
 import useSettings from '../../../hooks/useSettings';
 import Head from 'next/head';
+import PullToRefresh from '../../PullToRefresh';
 
 interface PageTitleProps {
   title: string | (string | undefined)[];
@@ -13,9 +14,12 @@ const PageTitle = ({ title }: PageTitleProps) => {
   } - ${settings.currentSettings.applicationTitle}`;
 
   return (
-    <Head>
-      <title>{titleText}</title>
-    </Head>
+    <>
+      <PullToRefresh />
+      <Head>
+        <title>{titleText}</title>
+      </Head>
+    </>
   );
 };
 
