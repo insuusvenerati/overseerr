@@ -157,7 +157,7 @@
     "typescript": "4.7.4"
   },
   "resolutions": {
-    "sqlite3/node-gyp": "8.4.1",
+    "sqlite3/node-gyp": "9.1.0",
     "@types/react": "18.0.17",
     "@types/react-dom": "18.0.6"
   },
